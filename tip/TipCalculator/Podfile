@@ -1,0 +1,7 @@
+platform :ios, '9.0'
+use_frameworks!
+
+target 'TipCalculator' do
+  pod 'Amplitude-iOS', '~> 3.14.1'
+end
+
