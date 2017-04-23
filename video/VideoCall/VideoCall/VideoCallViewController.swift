@@ -71,8 +71,9 @@ class VideoCallViewController: UIViewController {
     // method required to draw the view
     override func viewDidLoad() {
         super.viewDidLoad()
-        
-        // Do any additional setup after loading the view.
+        self.subscriberView.layer.cornerRadius = self.subscriberView.frame.width/2
+        self.subscriberView.clipsToBounds = true
+        // Do any additional setup after loading the view
     }
     
     // FUNC DIDRECEIVEMEMORYWARNING()

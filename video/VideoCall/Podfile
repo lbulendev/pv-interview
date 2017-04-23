@@ -5,3 +5,7 @@ target 'VideoCall' do
   pod 'OpenTok', '~> 2.10.2'
 end
 
+target 'VideoCallUnitTests' do
+  pod 'OpenTok', '~> 2.10.2'
+end
+
