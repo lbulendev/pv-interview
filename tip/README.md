@@ -37,7 +37,7 @@ What did I struggle with?  Amplitude's API was easy to setup and start sending d
         3) Amplitude.instance().disableLocationListening()
 
         4) Amplitude.instance().logEvent("UserTapped")
-            Added this log event for user taps, like changing the selected index in SEGMENTED control, and the used FINISHED EDITING TEXT for either text field (Bill Amount and Party Size)
+            Added this log event for user taps, like changing SLIDER control, and the used FINISHED EDITING TEXT for either text field (Bill Amount and Party Size)
 
         5) Amplitude.instance().logRevenue("tip percentage", quantity: 1, price: Int(percentAmt * 100) as NSNumber, receipt: nil)
             Added this log Revenue to capture the user percentage.  The percentage in the app is Double, but the log expects NSNUMBER (INT), so I multiplied the DOUBLE value by 100.

@@ -4,7 +4,6 @@
         <adaptation id="fullscreen"/>
     </device>
     <dependencies>
-        <deployment identifier="iOS"/>
         <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="12086"/>
         <capability name="Constraints to layout margins" minToolsVersion="6.0"/>
         <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
@@ -29,7 +28,7 @@
                                 <nil key="highlightedColor"/>
                             </label>
                             <stackView opaque="NO" contentMode="scaleToFill" axis="vertical" translatesAutoresizingMaskIntoConstraints="NO" id="uCj-vk-lsP">
-                                <rect key="frame" x="16" y="74" width="288" height="149.5"/>
+                                <rect key="frame" x="16" y="74" width="288" height="151.5"/>
                                 <subviews>
                                     <stackView opaque="NO" contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="8aX-rK-Yx2">
                                         <rect key="frame" x="0.0" y="0.0" width="288" height="30"/>
@@ -53,30 +52,36 @@
                                         </subviews>
                                     </stackView>
                                     <stackView opaque="NO" contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="SZr-i4-3uJ">
-                                        <rect key="frame" x="0.0" y="30" width="288" height="28"/>
+                                        <rect key="frame" x="0.0" y="30" width="288" height="30"/>
                                         <subviews>
                                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Tip (%):" textAlignment="right" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="9y3-7M-rvF">
-                                                <rect key="frame" x="0.0" y="0.0" width="57.5" height="28"/>
+                                                <rect key="frame" x="0.0" y="0.0" width="57.5" height="30"/>
                                                 <fontDescription key="fontDescription" type="system" pointSize="17"/>
                                                 <nil key="textColor"/>
                                                 <nil key="highlightedColor"/>
                                             </label>
-                                            <segmentedControl opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="top" segmentControlStyle="plain" selectedSegmentIndex="1" translatesAutoresizingMaskIntoConstraints="NO" id="gFg-8E-w2D">
-                                                <rect key="frame" x="57.5" y="0.0" width="230.5" height="29"/>
-                                                <segments>
-                                                    <segment title="5%"/>
-                                                    <segment title="10%"/>
-                                                    <segment title="15%"/>
-                                                    <segment title="20%"/>
-                                                </segments>
+                                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="(0%)" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="aFQ-VY-oZ9">
+                                                <rect key="frame" x="57.5" y="0.0" width="29.5" height="30"/>
+                                                <fontDescription key="fontDescription" type="system" pointSize="14"/>
+                                                <nil key="textColor"/>
+                                                <nil key="highlightedColor"/>
+                                            </label>
+                                            <slider opaque="NO" contentMode="scaleToFill" horizontalHuggingPriority="249" horizontalCompressionResistancePriority="250" contentHorizontalAlignment="center" contentVerticalAlignment="center" value="0.25" minValue="0.0" maxValue="0.5" translatesAutoresizingMaskIntoConstraints="NO" id="1Lc-9w-nas">
+                                                <rect key="frame" x="85" y="0.0" width="167" height="31"/>
                                                 <connections>
-                                                    <action selector="percentChangedWithSegmentedControl:" destination="BYZ-38-t0r" eventType="valueChanged" id="7AU-a6-RTs"/>
+                                                    <action selector="percentageChanged:" destination="BYZ-38-t0r" eventType="valueChanged" id="ugb-N2-Wgq"/>
                                                 </connections>
-                                            </segmentedControl>
+                                            </slider>
+                                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="(50%)" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="Ofy-kr-wBb">
+                                                <rect key="frame" x="250" y="0.0" width="38" height="30"/>
+                                                <fontDescription key="fontDescription" type="system" pointSize="14"/>
+                                                <nil key="textColor"/>
+                                                <nil key="highlightedColor"/>
+                                            </label>
                                         </subviews>
                                     </stackView>
                                     <stackView opaque="NO" contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="Xs4-s2-c1S">
-                                        <rect key="frame" x="0.0" y="58" width="288" height="20.5"/>
+                                        <rect key="frame" x="0.0" y="60" width="288" height="20.5"/>
                                         <subviews>
                                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Tip Amount:" textAlignment="right" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="qTW-TK-cD1">
                                                 <rect key="frame" x="0.0" y="0.0" width="93.5" height="20.5"/>
@@ -93,7 +98,7 @@
                                         </subviews>
                                     </stackView>
                                     <stackView opaque="NO" contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="DcE-eB-eul">
-                                        <rect key="frame" x="0.0" y="78.5" width="288" height="20.5"/>
+                                        <rect key="frame" x="0.0" y="80.5" width="288" height="20.5"/>
                                         <subviews>
                                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Total Bill:" textAlignment="right" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="CBs-CO-IkH">
                                                 <rect key="frame" x="0.0" y="0.0" width="69" height="20.5"/>
@@ -110,7 +115,7 @@
                                         </subviews>
                                     </stackView>
                                     <stackView opaque="NO" contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="s4O-jb-8FY">
-                                        <rect key="frame" x="0.0" y="99" width="288" height="30"/>
+                                        <rect key="frame" x="0.0" y="101" width="288" height="30"/>
                                         <subviews>
                                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Number of People:" textAlignment="right" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="8L1-bv-Ugd">
                                                 <rect key="frame" x="0.0" y="0.0" width="143" height="30"/>
@@ -131,7 +136,7 @@
                                         </subviews>
                                     </stackView>
                                     <stackView opaque="NO" contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="nKP-KJ-CCe">
-                                        <rect key="frame" x="0.0" y="129" width="288" height="20.5"/>
+                                        <rect key="frame" x="0.0" y="131" width="288" height="20.5"/>
                                         <subviews>
                                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" verticalHuggingPriority="251" text="Share per Person:" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="C98-QB-Z3I">
                                                 <rect key="frame" x="0.0" y="0.0" width="253.5" height="20.5"/>
@@ -169,7 +174,7 @@
                         <outlet property="billTotalAmountLabel" destination="YjV-4i-uoF" id="fIv-Mi-Xt0"/>
                         <outlet property="numberOfPeopleTextField" destination="0uE-mv-BSG" id="0aG-mq-iQR"/>
                         <outlet property="tipAmountLabel" destination="wqf-G3-B7w" id="2cX-hK-Gks"/>
-                        <outlet property="tipPercentSegmentedControl" destination="gFg-8E-w2D" id="c2G-Si-q1a"/>
+                        <outlet property="tipPercentageSlider" destination="1Lc-9w-nas" id="iRd-dG-HeX"/>
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="dkx-z0-nzr" sceneMemberID="firstResponder"/>

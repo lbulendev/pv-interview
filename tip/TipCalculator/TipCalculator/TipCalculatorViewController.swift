@@ -16,7 +16,8 @@ import CoreLocation  // required for using CoreLocationManager
 class TipCalculatorViewController: UIViewController, CLLocationManagerDelegate  {
 
     @IBOutlet weak var billAmountTextField: UITextField!                // where user enter's bill amount
-    @IBOutlet weak var tipPercentSegmentedControl: UISegmentedControl!  // used a segmented control to have fixed % amounts
+    
+    @IBOutlet weak var tipPercentageSlider: UISlider!
     
     @IBOutlet weak var tipAmountLabel: UILabel!                         // label to display calculated tip amount
     @IBOutlet weak var billTotalAmountLabel: UILabel!                   // label to show bill total (bill amount + tip amount)
@@ -30,6 +31,12 @@ class TipCalculatorViewController: UIViewController, CLLocationManagerDelegate  
         }
     }
     
+    var percentAmt : Double? = 0.25 {
+        didSet {
+            calculateTip()
+        }
+    }
+
     var locationManager: CLLocationManager = CLLocationManager.init()  // Required to find users' location (lat/long)
         
     // used to store party size; on change calculates new tip
@@ -96,11 +103,11 @@ class TipCalculatorViewController: UIViewController, CLLocationManagerDelegate  
         }
     }
     
-    // FUNC PERCENTHANGED(SEGMENTEDCONTROL: UISEGMENTEDCONTROL)
+    // FUNC PERCENTAGECHANGED(_ SENDER: UISLIDER)
     // method used the % control is changed; calcualte tip with new percent
-    @IBAction func percentChanged(segmentedControl: UISegmentedControl) {
+    @IBAction func percentageChanged(_ sender: UISlider) {
+        percentAmt = Double(String(format: "%.2f", sender.value))!
         Amplitude.instance().logEvent("UserTapped")
-        calculateTip()
     }
     
     // FUNC NUMBEROFPEOPLECHANGED(_ sender: UITEXTFIELD)
@@ -130,18 +137,9 @@ class TipCalculatorViewController: UIViewController, CLLocationManagerDelegate  
     // FUNC CALCULATETIP()
     // This method does the 'work' calculating the tip amount, bill total, and amount each person should contribute
     func calculateTip() {
-        var percentAmt : Double = 0 // This will store the percent based on the selected index in the segment control
-
-        // Which segment control is selected?  There are 4 positions (5%, 10%, 15%, and 20%).
-        switch tipPercentSegmentedControl.selectedSegmentIndex {
-            case 0: percentAmt = 0.05
-            case 1: percentAmt = 0.10
-            case 2: percentAmt = 0.15
-            default: percentAmt = 0.2
-        }
         
         // Calcuate tip amount = initialAmt * percent
-        tipAmountLabel.text = String(format: "%.2f", initialAmountValue! * percentAmt)
+        tipAmountLabel.text = String(format: "%.2f", initialAmountValue! * percentAmt!)
         
         // Calculate total bill = initalAmt + tipAmt
         billTotalAmountLabel.text = String(format: "%.2f", Double(tipAmountLabel.text!)! + initialAmountValue!)
@@ -151,7 +149,7 @@ class TipCalculatorViewController: UIViewController, CLLocationManagerDelegate  
         
         // Used this URL: http://stackoverflow.com/questions/39127689/converting-double-to-nsnumber-in-swift-loses-accuracy
         // Wasn't sure how to convert double to NSNumber, and site recommended to convert to INT.  So, I am multiplying DOUBLE by 100
-        Amplitude.instance().logRevenue("tip percentage", quantity: 1, price: Int(percentAmt * 100) as NSNumber, receipt: nil)
+        Amplitude.instance().logRevenue("tip percentage", quantity: 1, price: Int(percentAmt! * 100) as NSNumber, receipt: nil)
     }
     
 }
